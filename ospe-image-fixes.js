@@ -17,6 +17,19 @@ function bestSource(q){
  return ranked[Number(q.id.slice(-1))%Math.min(ranked.length,2)];
 }
 const sourceCache=new Map();
+const fallbackCache=new Map();
+const fallbackCrop=(url,box)=>new Promise(resolve=>{
+ if(fallbackCache.has(url)){resolve(fallbackCache.get(url));return;}
+ const img=new Image();
+ img.onload=()=>{
+  const [x,y,w,h]=box,canvas=document.createElement('canvas');
+  canvas.width=Math.round(img.naturalWidth*w);canvas.height=Math.round(img.naturalHeight*h);
+  canvas.getContext('2d').drawImage(img,Math.round(img.naturalWidth*x),Math.round(img.naturalHeight*y),canvas.width,canvas.height,0,0,canvas.width,canvas.height);
+  const src=canvas.toDataURL('image/webp',0.96);fallbackCache.set(url,src);resolve(src);
+ };
+ img.onerror=()=>resolve(url);
+ img.src=url;
+});
 function sourceFor(q){
  if(!q||!q.img)return null;
  if(!/^(NEW|ADD)/.test(q.id))return {src:images[q.img],type:q.imgType||'Diagnostic image',original:true};
@@ -30,9 +43,10 @@ css.textContent='.photo{min-height:230px!important;padding:18px 8px!important;ov
 document.head.appendChild(css);
 const qPhoto=document.getElementById('qPhoto');
 const previousShow=showQuestion;
-showQuestion=function(){previousShow();const q=queue[index];if(!q?.img)return;const photo=sourceFor(q);qPhoto.src=photo.src;document.getElementById('photoType').textContent=photo.type;};
-openFull=function(){const q=queue[index];if(!q?.img)return;const image=sourceFor(q);document.getElementById('fullImg').src=image.src;document.getElementById('lightbox').classList.add('show');};
+showQuestion=function(){previousShow();const q=queue[index];if(!q?.img)return;const photo=sourceFor(q);qPhoto.src=photo.src;document.getElementById('photoType').textContent=photo.type;
+if(!photo.original&&q.img==='new_midterm_page_4.webp'){const here=q.id;fallbackCrop(images[q.img],[0.145,0.091,0.84,0.23]).then(url=>{if(queue[index]?.id===here)qPhoto.src=url});}};
+openFull=function(){const q=queue[index];if(!q?.img)return;const image=sourceFor(q);const full=document.getElementById('fullImg');full.src=image.src;document.getElementById('lightbox').classList.add('show');if(!image.original&&q.img==='new_midterm_page_4.webp')fallbackCrop(images[q.img],[0.145,0.091,0.84,0.23]).then(url=>full.src=url);};
 const info=document.createElement('small');info.textContent='Medical figure from the original lecture · image shown without tight cropping';info.style.cssText='display:block;color:#91a7c2;text-align:center;padding:0 15px 15px;font-size:11px;';document.getElementById('photoFrame').after(info);
-const baseShow2=showQuestion;showQuestion=function(){baseShow2();info.style.display=queue[index]?.img?'':'none';};
+const baseShow2=showQuestion;showQuestion=function(){baseShow2();info.style.display=queue[index]?.img?'':'none';info.textContent=sourceFor(queue[index])?.original?'Individual medical figure from the original lecture, displayed without extra cropping':'Medical figure from the source review, isolated from surrounding text';};
 document.documentElement.dataset.figureQuality='lecture-originals-no-extra-cropping';
 })();
