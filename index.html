@@ -79,7 +79,7 @@ function resetSaved(){if(!confirm('حذف جميع الإحصائيات والأ
 function openFull(){let q=queue[index];if(!q||!q.img)return;$('fullImg').src=images[q.img];$('lightbox').classList.add('show')}
 function closeFull(){$('lightbox').classList.remove('show')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFull()});
-async function loadSlideImages(){const ids=[0,2,3,4,5,6,7,8,9]; const results=await Promise.all(ids.map(i=>fetch('ospe-images-'+i+'.json').then(r=>{if(!r.ok)throw new Error('Image part '+i);return r.json()}))); for(const part of results)Object.assign(images,part);init()} loadSlideImages().catch(err=>{console.error(err);init()});
+async function loadSlideImages(){const ids=[0,2,3,4,5,6,7,8,9]; const results=await Promise.allSettled(ids.map(i=>fetch('ospe-images-'+i+'.json').then(r=>{if(!r.ok)throw new Error('Image part '+i);return r.json()}))); for(const result of results){if(result.status==='fulfilled')Object.assign(images,result.value);else console.warn(result.reason)}init()} loadSlideImages().catch(err=>{console.error(err);init()});
 </script>
 </body>
 </html>
