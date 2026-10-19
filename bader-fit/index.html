@@ -135,10 +135,9 @@ button{transition:background-color .16s ease,border-color .16s ease,filter .16s 
   window.addEventListener('DOMContentLoaded',function(){setTimeout(function(){let status=document.getElementById('status');if(status&&status.textContent.trim()==='Connecting...')show('Connection still pending. Check network or account loading.');},7000)});
 })();
 </script><main id="app"></main><style id="safari-bottom-nav-fix">
-/* Fixed tabs: use Safari's visible viewport, not the document bottom. */
 html{scroll-padding-bottom:120px}
-body{padding-bottom:calc(106px + env(safe-area-inset-bottom,0px))!important}
-#nav{position:fixed!important;top:auto!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100% - 24px)!important;max-width:720px!important;margin:0!important;padding:9px 8px!important;border-radius:20px!important;z-index:999!important;overflow:visible!important;box-shadow:0 8px 35px #0005!important}
+body{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))!important}
+#nav{position:fixed!important;top:var(--fo-nav-top,auto)!important;bottom:var(--fo-nav-bottom,calc(10px + env(safe-area-inset-bottom,0px)))!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100% - 24px)!important;max-width:720px!important;margin:0!important;padding:9px 8px!important;border-radius:20px!important;z-index:999!important;overflow:visible!important;box-shadow:0 8px 35px #0005!important;transition:none!important}
 #nav button{min-height:55px!important}
 @media(max-width:600px){#nav{width:calc(100% - 24px)!important;max-width:calc(100% - 24px)!important;margin:0!important}}
 </style><style id="form-one-information-architecture">
@@ -241,5 +240,31 @@ function foExerciseCompare(name){const past=Object.entries(data.workouts||{}).fi
 const foExerciseOriginal=exercise;exercise=function(){const e=current().ex[ix];return e?foExerciseCompare(e.n)+foExerciseOriginal():foExerciseOriginal()};
 function foInstallGuide(){return '<div class="card"><span class="section-kicker">QUICK ACCESS / IPHONE</span><h2>ADD FORM / ONE TO HOME SCREEN</h2><p>Open this site in Safari, tap the Share icon, select <b>Add to Home Screen</b>, then tap <b>Add</b>. Launch it from its icon for a standalone app-like view.</p><p class="muted">This is an installed website, not a native iOS app. Apple Health sync still runs through your existing iPhone Shortcut.</p></div>'}
 const foSettingsOriginal=settings;settings=function(){return foInstallGuide()+foSettingsOriginal()};
+
+/* Keep the navigation anchored to the visual viewport when Safari's toolbar expands/collapses. */
+(function(){
+ const vv=window.visualViewport;
+ if(!vv)return;
+ let pending=false;
+ function positionNav(){
+   pending=false;
+   const nav=document.getElementById('nav');
+   if(!nav)return;
+   const h=nav.offsetHeight||75;
+   const safe=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fo-bottom-safe'))||0;
+   const visibleBottom=vv.offsetTop+vv.height;
+   const top=Math.max(vv.offsetTop+4,visibleBottom-h-10-safe);
+   nav.style.setProperty('--fo-nav-top',top+'px');
+   nav.style.setProperty('--fo-nav-bottom','auto');
+ }
+ function schedule(){if(!pending){pending=true;requestAnimationFrame(positionNav)}}
+ vv.addEventListener('resize',schedule,{passive:true});
+ vv.addEventListener('scroll',schedule,{passive:true});
+ window.addEventListener('resize',schedule,{passive:true});
+ window.addEventListener('orientationchange',schedule,{passive:true});
+ window.addEventListener('pageshow',schedule,{passive:true});
+ document.addEventListener('visibilitychange',schedule,{passive:true});
+ schedule();
+})();
 
 render();restore().then(render).catch(e=>notice('Connection issue: '+e.message));</script></html>
