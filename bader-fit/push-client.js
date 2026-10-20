@@ -28,9 +28,9 @@ function foPushPanel(){
 }
 function foPushReplacePanel(){const old=document.querySelector(".fo-push-panel");if(!old)return;const el=document.createElement("div");el.innerHTML=foPushPanel();old.replaceWith(el.firstElementChild)}
 async function foPushRefresh(force=false){
- if(!uid||view!=="Settings"||foPushState.busy||(!force&&Date.now()-foPushFetchedAt<30000))return;
+ if(!uid||foPushState.busy||(!force&&Date.now()-foPushFetchedAt<30000))return;
  foPushFetchedAt=Date.now();
- try{const r=await foPushRequest("status");foPushState={...foPushState,subscribed:r.subscribed===true,enabled:r.enabled===true,preferences:r.preferences||foPushDefaults,error:""}}
+ try{const r=await foPushRequest("status");foPushState={...foPushState,subscribed:r.subscribed===true,enabled:r.enabled===true,preferences:r.preferences||foPushDefaults,error:"",loaded:true}}
  catch(e){foPushState.error=String(e.message||e)}
  foPushReplacePanel()
 }
@@ -80,5 +80,5 @@ timer=function(s){
 const foSettingsPushBase=settings;
 settings=function(){return foPushPanel()+foSettingsPushBase()};
 const foRenderPushBase=render;
-render=function(){foRenderPushBase();if(uid&&view==="Settings")foPushRefresh().catch(()=>{})};
+render=function(){foRenderPushBase();if(uid&&(view==="Settings"||!foPushState.loaded))foPushRefresh().catch(()=>{})};
 render();
