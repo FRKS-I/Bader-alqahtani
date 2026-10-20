@@ -1,4 +1,4 @@
-/* FORM / ONE — Web Push on individual signed-in devices. */
+/* مدار — Web Push on individual signed-in devices. */
 const foPushPublicKey="BJcPk9PfA7pvPVxf9cro9gyAV_sBHLax7XRYZWeezQYS71crYaI3g0dw4EJ_-sTaBu4FMaYEGF3qXQN8RBKnxkc";
 const foPushDefaults={workout:true,rest:true,streak:true,rings:true,sleep:true,weekly:true,workout_hour:18,sleep_hour:21};
 let foPushState={subscribed:false,enabled:false,preferences:{...foPushDefaults},busy:false,error:""},foPushFetchedAt=0;
@@ -15,16 +15,16 @@ async function foPushRequest(action,body={}){
 }
 function foPushStatusMessage(){
  if(foPushState.error)return '<span class="fo-push-error">'+esc(foPushState.error)+'</span>';
- if(!foPushSupported())return 'Open FORM ONE from its Home Screen icon on a supported device.';
- if(!foPushInstalled()&&/iPad|iPhone|iPod/i.test(navigator.userAgent))return 'Open FORM ONE from its Home Screen icon, not Safari.';
- if(Notification.permission==="denied")return 'Notifications are blocked in iOS Settings. Allow them for FORM ONE.';
+ if(!foPushSupported())return 'Open مدار from its Home Screen icon on a supported device.';
+ if(!foPushInstalled()&&/iPad|iPhone|iPod/i.test(navigator.userAgent))return 'Open مدار from its Home Screen icon, not Safari.';
+ if(Notification.permission==="denied")return 'Notifications are blocked in iOS Settings. Allow them for مدار.';
  return foPushState.subscribed&&foPushState.enabled&&Notification.permission==="granted"?'● CONNECTED · Notifications enabled on this device':'○ Not connected on this device';
 }
 function foPushPanel(){
  const p=foPushState.preferences||foPushDefaults,on=foPushState.subscribed&&foPushState.enabled;
  const options=[["workout","Workout reminder","Reminder on training days"],["rest","Rest timer","Timer completion when app is closed"],["streak","Streaks & achievements","Milestone sessions"],["rings","Activity goals","After Apple Health sync"],["sleep","Sleep reminder","Recovery journal"],["weekly","Weekly report","Weekly consistency recap"]];
  const hours=key=>Array.from({length:24},(_,i)=>'<option value="'+i+'" '+(Number(p[key])===i?'selected':'')+'>'+String(i).padStart(2,'0')+':00</option>').join('');
- return '<div class="card fo-push-panel"><div class="fo-section-line"><span class="fo-icon-disc">♧</span><div><span class="section-kicker">IPHONE & IPAD</span><h2>Push notifications</h2></div></div><p class="muted">Get alerts on your Lock Screen even when FORM ONE is closed. Each device has its own preferences.</p><div class="fo-push-status">'+foPushStatusMessage()+'</div><div class="fo-push-actions"><button '+(foPushState.busy?'disabled':'')+' onclick="foPushEnable()">'+(on?'Reconnect':'Enable Notifications')+'</button>'+(on?'<button class="secondary" onclick="foPushTest()">Send test</button><button class="secondary" onclick="foPushDisable()">Turn off</button>':'')+'</div>'+(on?'<div class="fo-push-options">'+options.map(([k,name,description])=>'<label class="fo-push-option"><span><b>'+name+'</b><small>'+description+'</small></span><input type="checkbox" '+(p[k]!==false?'checked':'')+' onchange="foPushToggle(\''+k+'\',this.checked)"></label>').join('')+'<div class="fo-push-time-row"><label>Workout hour · Saudi time<select onchange="foPushHour(\'workout_hour\',this.value)">'+hours('workout_hour')+'</select></label><label>Sleep hour · Saudi time<select onchange="foPushHour(\'sleep_hour\',this.value)">'+hours('sleep_hour')+'</select></label></div></div>':'')+'<p class="muted">Tap Enable, then Allow on the Apple prompt. Reminders depend on the background scheduler, connectivity and iOS delivery; rest reminders may be late.</p></div>'
+ return '<div class="card fo-push-panel"><div class="fo-section-line"><span class="fo-icon-disc">♧</span><div><span class="section-kicker">IPHONE & IPAD</span><h2>Push notifications</h2></div></div><p class="muted">Get alerts on your Lock Screen even when مدار is closed. Each device has its own preferences.</p><div class="fo-push-status">'+foPushStatusMessage()+'</div><div class="fo-push-actions"><button '+(foPushState.busy?'disabled':'')+' onclick="foPushEnable()">'+(on?'Reconnect':'Enable Notifications')+'</button>'+(on?'<button class="secondary" onclick="foPushTest()">Send test</button><button class="secondary" onclick="foPushDisable()">Turn off</button>':'')+'</div>'+(on?'<div class="fo-push-options">'+options.map(([k,name,description])=>'<label class="fo-push-option"><span><b>'+name+'</b><small>'+description+'</small></span><input type="checkbox" '+(p[k]!==false?'checked':'')+' onchange="foPushToggle(\''+k+'\',this.checked)"></label>').join('')+'<div class="fo-push-time-row"><label>Workout hour · Saudi time<select onchange="foPushHour(\'workout_hour\',this.value)">'+hours('workout_hour')+'</select></label><label>Sleep hour · Saudi time<select onchange="foPushHour(\'sleep_hour\',this.value)">'+hours('sleep_hour')+'</select></label></div></div>':'')+'<p class="muted">Tap Enable, then Allow on the Apple prompt. Reminders depend on the background scheduler, connectivity and iOS delivery; rest reminders may be late.</p></div>'
 }
 function foPushReplacePanel(){const old=document.querySelector(".fo-push-panel");if(!old)return;const el=document.createElement("div");el.innerHTML=foPushPanel();old.replaceWith(el.firstElementChild)}
 async function foPushRefresh(force=false){
