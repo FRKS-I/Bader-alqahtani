@@ -62,6 +62,24 @@
         title.style.textAlign="left";
       }
     }
+    const subtitle=hero?.querySelector("p");
+    if(subtitle&&subtitle.textContent.includes("Your work starts here")){
+      subtitle.textContent="كل خطوة محسوبة، وعلى وتيرتك.";
+      subtitle.setAttribute("lang","ar");
+    }
+    const tag=hero?.querySelector(".todaytag");
+    if(tag&&tag.textContent.includes("SESSION"))tag.textContent="جلسة اليوم "+(tag.textContent.match(/\\d+/)?.[0]||"");
+    const statLabels={
+      "STRENGTH":"القوة","ENGINE":"الكارديو","STATUS":"الحالة",
+      "SETS COMPLETE":"المجموعات المنجزة","CARDIO LOGGED":"الكارديو المسجل","DAILY MISSION":"مهمة اليوم"
+    };
+    app.querySelectorAll(".stat small").forEach(el=>{
+      let label=el.textContent.trim();
+      for(const [from,to] of Object.entries(statLabels))label=label.replace(from,to);
+      el.textContent=label;
+    });
+    const rings=app.querySelector(".rings-panel h2");
+    if(rings)rings.textContent="حلقات النشاط";
     const session=app.querySelector(".section-heading h2");
     if(session)session.textContent="تمارين اليوم";
   }
@@ -75,6 +93,13 @@
     if(title){title.textContent=name[0];title.setAttribute("dir","rtl")}
     if(subtitle){subtitle.textContent=name[1];subtitle.setAttribute("dir","rtl")}
     heading.setAttribute("aria-label",name[0]);
+    const sectionCardTitles={
+      Progress:[[".fo-consistency h2","الاستمرارية"],[".fo-watch h2","تحليل الساعة"],[".fo-sleep h2","النوم والتعافي"],[".rings-panel h2","حلقات النشاط"]],
+      Nutrition:[[".fo-fuel-summary h2","الرصيد اليومي"],[".fo-meals h2","وجبات اليوم"]]
+    };
+    for(const [selector,text] of sectionCardTitles[which]||[]){
+      const el=app.querySelector(selector);if(el)el.textContent=text;
+    }
     if(which==="Plan"){
       app.querySelectorAll(".fo-plan-day .fo-day-meta strong").forEach(el=>{
         let text=el.textContent;
@@ -107,6 +132,8 @@
   const previousRender=render;
   render=function(){
     previousRender();
+    const status=document.getElementById("status");
+    if(status)status.textContent=uid?"☁ حسابك":"تسجيل الدخول";
     const normalized=view==="Exercise"?"Plan":view;
     document.body.dataset.formSection=normalized;
     enhanceNavigation();
