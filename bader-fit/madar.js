@@ -129,8 +129,82 @@
       }
     });
   }
+  /* iPad/iPhone background Apple Health refresh: update read-only widgets in place.
+     Never replace the app root, open <details>, or editable fields while polling. */
+  function patchNode(current,next){
+    if(current.isEqualNode(next))return;
+    if(current.nodeType!==next.nodeType||current.nodeName!==next.nodeName){
+      current.replaceWith(next.cloneNode(true));
+      return;
+    }
+    if(current.nodeType===3||current.nodeType===8){
+      if(current.nodeValue!==next.nodeValue)current.nodeValue=next.nodeValue;
+      return;
+    }
+    if(current.nodeType!==1)return;
+    for(const a of Array.from(current.attributes)){
+      if(!next.hasAttribute(a.name))current.removeAttribute(a.name);
+    }
+    for(const a of Array.from(next.attributes)){
+      if(current.getAttribute(a.name)!==a.value)current.setAttribute(a.name,a.value);
+    }
+    let i=0;
+    while(i<next.childNodes.length||i<current.childNodes.length){
+      const before=current.childNodes[i],after=next.childNodes[i];
+      if(!after){before.remove();continue}
+      if(!before){current.appendChild(after.cloneNode(true));i++;continue}
+      patchNode(before,after);i++;
+    }
+  }
+  function quietlyUpdate(selector,html){
+    const app=document.getElementById("app");
+    const original=app?.querySelector(selector);
+    if(!original||original.contains(document.activeElement))return;
+    const tmp=document.createElement("template");
+    tmp.innerHTML=html;
+    const next=tmp.content.querySelector(selector);
+    if(next)patchNode(original,next);
+  }
+  window.madarUpdateHealth=function(){
+    if(!uid||(view!=="Today"&&view!=="Progress"))return;
+    const root=document.getElementById("app");
+    if(!root||root.dataset.madarView!==view||root.dataset.madarDay!==day)return;
+    // The tree behind an expanded details element stays mounted; no collapse,
+    // scrolling jump, caret loss or input reset while the clock polls.
+    try{
+      quietlyUpdate(".rings-panel",activityPanel());
+      if(view==="Progress"){
+        quietlyUpdate(".fo-watch",foWatchInsights());
+        quietlyUpdate(".health-week",weeklyHealthPanel());
+        quietlyUpdate(".fo-weekly-health",foWeeklyComparison());
+      }
+    }catch(error){console.warn("MADAR quiet health update unavailable",error)}
+  };
+
+  /* Defensive guard for unrelated same-page redraws: keep expanded
+     sections open and retain the user's active unsaved text draft. */
+  let lastIntentionalTap=0;
+  document.addEventListener("click",event=>{
+    if(event.target?.closest?.("button"))lastIntentionalTap=Date.now();
+  },true);
   const previousRender=render;
   render=function(){
+    const oldApp=document.getElementById("app");
+    const samePage=!!oldApp&&oldApp.dataset.madarView===view&&oldApp.dataset.madarDay===day;
+    const disclosures=samePage?
+      Array.from(oldApp.querySelectorAll("details"),item=>item.open):null;
+    const active=document.activeElement;
+    const inputs=samePage?Array.from(oldApp.querySelectorAll("input,textarea,select")):[];
+    const activeIndex=inputs.indexOf(active);
+    const protectDraft=activeIndex>=0&&Date.now()-lastIntentionalTap>750;
+    const draft=protectDraft?{
+      id:active.id||"",index:activeIndex,value:active.value,
+      checked:active.checked,selectionStart:null,selectionEnd:null
+    }:null;
+    if(draft&&typeof active.selectionStart==="number"){
+      draft.selectionStart=active.selectionStart;
+      draft.selectionEnd=active.selectionEnd;
+    }
     previousRender();
     const status=document.getElementById("status");
     if(status)status.textContent=uid?"☁ حسابك":"تسجيل الدخول";
@@ -138,10 +212,32 @@
     document.body.dataset.formSection=normalized;
     enhanceNavigation();
     const app=document.getElementById("app");
-    if(!app||!uid)return;
-    if(view==="Today")enhanceToday(app);
-    else if(view==="Plan"||view==="Progress"||view==="Nutrition"||view==="Settings")enhanceSection(app,view);
-    replaceVisibleOldBrand(app);
+    if(!app)return;
+    if(uid&&samePage&&disclosures){
+      const nextDetails=app.querySelectorAll("details");
+      disclosures.forEach((open,i)=>{if(nextDetails[i])nextDetails[i].open=open});
+      if(draft){
+        const fields=Array.from(app.querySelectorAll("input,textarea,select"));
+        const matching=draft.id?app.querySelector('[id="'+draft.id.replace(/["\\]/g,"\\$&")+'"]'):null;
+        const field=matching||fields[draft.index];
+        if(field){
+          field.value=draft.value;
+          if(field.type==="checkbox"||field.type==="radio")field.checked=draft.checked;
+          try{
+            field.focus({preventScroll:true});
+            if(draft.selectionStart!==null&&typeof field.setSelectionRange==="function")
+              field.setSelectionRange(draft.selectionStart,draft.selectionEnd);
+          }catch{}
+        }
+      }
+    }
+    if(uid){
+      if(view==="Today")enhanceToday(app);
+      else if(view==="Plan"||view==="Progress"||view==="Nutrition"||view==="Settings")enhanceSection(app,view);
+      replaceVisibleOldBrand(app);
+    }
+    app.dataset.madarView=view;
+    app.dataset.madarDay=day;
   };
   render();
 })();
