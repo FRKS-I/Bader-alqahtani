@@ -53,7 +53,7 @@
     const hero=app.querySelector(".card.hero");
     if(hero){
       if(!hero.querySelector(".madar-orb-art")){
-        hero.insertAdjacentHTML("afterbegin",'<img class="madar-orb-art" src="./icon.svg?v=madar2" alt="" aria-hidden="true" loading="eager">');
+        hero.insertAdjacentHTML("afterbegin",'<img class="madar-orb-art" src="./orbit.svg?v=1" alt="" aria-hidden="true" loading="eager">');
       }
       const title=hero.querySelector("h1");
       if(title&&trainingNames[title.textContent.trim()]){
