@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="مدار">
+<defs>
+<radialGradient id="p" cx=".25" cy=".22" r=".78"><stop stop-color="#c3f6ff"/><stop offset=".26" stop-color="#76c9e9"/><stop offset=".57" stop-color="#2878af"/><stop offset="1" stop-color="#10294d"/></radialGradient>
+<linearGradient id="o" x1="0" x2="1" y1=".86" y2="0"><stop stop-color="#3288b7"/><stop offset=".48" stop-color="#70d6f0"/><stop offset="1" stop-color="#d2f9ff"/></linearGradient>
+<radialGradient id="m"><stop stop-color="#fff3dd"/><stop offset="1" stop-color="#efa96f"/></radialGradient>
+</defs>
+<ellipse cx="256" cy="260" rx="190" ry="74" transform="rotate(-29 256 260)" fill="none" stroke="#66e4ff" stroke-opacity=".13" stroke-width="17"/>
+<ellipse cx="256" cy="260" rx="190" ry="74" transform="rotate(-29 256 260)" fill="none" stroke="url(#o)" stroke-opacity=".7" stroke-width="5"/>
+<circle cx="255" cy="260" r="89" fill="url(#p)"/>
+<path d="M218 185c-29 34-37 72-29 108 4 15 11 25 18 38-30-22-46-74-21-116 8-13 21-25 32-30z" fill="#fff" opacity=".17"/>
+<ellipse cx="256" cy="260" rx="190" ry="74" transform="rotate(-29 256 260)" fill="none" stroke="#0b2341" stroke-opacity=".55" stroke-width="14" stroke-dasharray="260 1000" stroke-dashoffset="-31"/>
+<ellipse cx="256" cy="260" rx="190" ry="74" transform="rotate(-29 256 260)" fill="none" stroke="url(#o)" stroke-width="7" stroke-linecap="round" stroke-dasharray="265 1000" stroke-dashoffset="-27"/>
+<circle cx="397" cy="169" r="18" fill="url(#m)" stroke="#fff3e5" stroke-width="2"/>
+</svg>
