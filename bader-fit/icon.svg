@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect width="512" height="512" rx="110" fill="#101714"/><path d="M58 110h192v60H126v62h111v60H126v116H58z" fill="#f5f5ed"/><path d="M280 98h52l-96 315h-52z" fill="#ff7652"/><path d="M355 110h100v60h-100zM355 231h100v60h-100zM355 352h100v60h-100z" fill="#f5f5ed"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="مدار — Madar">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101f34"/><stop offset=".52" stop-color="#091629"/><stop offset="1" stop-color="#070e1a"/></linearGradient>
+ <radialGradient id="planet" cx=".29" cy=".24" r=".85"><stop stop-color="#b4edf4"/><stop offset=".28" stop-color="#5db7d7"/><stop offset=".63" stop-color="#3078a8"/><stop offset="1" stop-color="#152e63"/></radialGradient>
+ <linearGradient id="orbit" x1=".05" x2=".92" y1=".8" y2=".1"><stop stop-color="#2f6f9d"/><stop offset=".47" stop-color="#71d8ef"/><stop offset="1" stop-color="#c9f5f8"/></linearGradient>
+ <radialGradient id="moon"><stop stop-color="#ffe2bf"/><stop offset="1" stop-color="#c78764"/></radialGradient>
+ <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="512" height="512" rx="106" fill="url(#bg)"/>
+<rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#6e9dbc" stroke-opacity=".15" stroke-width="2"/>
+<ellipse cx="256" cy="256" rx="188" ry="78" transform="rotate(-29 256 256)" fill="none" stroke="#3f8bb5" stroke-width="10" stroke-opacity=".23"/>
+<ellipse cx="256" cy="256" rx="188" ry="78" transform="rotate(-29 256 256)" fill="none" stroke="url(#orbit)" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+<circle cx="255" cy="258" r="94" fill="#66bfd9" opacity=".13" filter="url(#softGlow)"/>
+<circle cx="255" cy="258" r="88" fill="url(#planet)"/>
+<path d="M208 184c24-14 53-18 73-12-48 14-82 48-90 93-4 22-2 43 8 60-27-27-36-66-21-99 7-17 17-30 30-42z" fill="#c1fbff" opacity=".21"/>
+<path d="M307 191c26 23 41 56 36 94-6 43-31 67-64 79 28-33 48-72 41-116-3-20-8-38-13-57z" fill="#0a2446" opacity=".29"/>
+<path d="M112 323c75 74 231 37 304-52" fill="none" stroke="#072036" stroke-opacity=".55" stroke-width="15" stroke-linecap="round"/>
+<path d="M113 321c77 72 230 34 301-51" fill="none" stroke="url(#orbit)" stroke-width="9" stroke-linecap="round"/>
+<circle cx="389" cy="166" r="18" fill="url(#moon)" stroke="#ffe6d2" stroke-width="3"/>
+<circle cx="389" cy="166" r="23" fill="none" stroke="#d99870" stroke-opacity=".2" stroke-width="2"/>
+</svg>
