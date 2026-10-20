@@ -68,7 +68,7 @@
       subtitle.setAttribute("lang","ar");
     }
     const tag=hero?.querySelector(".todaytag");
-    if(tag&&tag.textContent.includes("SESSION"))tag.textContent="جلسة اليوم "+(tag.textContent.match(/\\d+/)?.[0]||"");
+    if(tag&&tag.textContent.includes("SESSION"))tag.textContent="جلسة اليوم "+(tag.textContent.match(/\d+/)?.[0]||"");
     const statLabels={
       "STRENGTH":"القوة","ENGINE":"الكارديو","STATUS":"الحالة",
       "SETS COMPLETE":"المجموعات المنجزة","CARDIO LOGGED":"الكارديو المسجل","DAILY MISSION":"مهمة اليوم"
