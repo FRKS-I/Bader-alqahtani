@@ -11,7 +11,7 @@ self.addEventListener("push",event=>{
     }
   }catch{ /* never drop an incoming push without showing a notification */ }
   const safeUrl=typeof payload.data?.url==="string"&&payload.data.url.startsWith("https://frks-i.github.io/Bader-alqahtani/bader-fit/")?payload.data.url:HOME;
-  event.waitUntil(self.registration.showNotification(String(payload.title||"FORM / ONE").slice(0,100),{
+  event.waitUntil(self.registration.showNotification(String(payload.title||"مدار").slice(0,100),{
     body:String(payload.body||"").slice(0,240),
     icon:"https://nxbciyowueonezkxohmb.supabase.co/functions/v1/madar-icon?size=192",
     badge:"https://nxbciyowueonezkxohmb.supabase.co/functions/v1/madar-icon?size=192",
