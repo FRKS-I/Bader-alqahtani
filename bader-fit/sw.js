@@ -13,8 +13,8 @@ self.addEventListener("push",event=>{
   const safeUrl=typeof payload.data?.url==="string"&&payload.data.url.startsWith("https://frks-i.github.io/Bader-alqahtani/bader-fit/")?payload.data.url:HOME;
   event.waitUntil(self.registration.showNotification(String(payload.title||"FORM / ONE").slice(0,100),{
     body:String(payload.body||"").slice(0,240),
-    icon:"./icon.svg",
-    badge:"./icon.svg",
+    icon:"https://nxbciyowueonezkxohmb.supabase.co/functions/v1/madar-icon?size=192",
+    badge:"https://nxbciyowueonezkxohmb.supabase.co/functions/v1/madar-icon?size=192",
     tag:String(payload.tag||"formone-update").slice(0,120),
     timestamp:Number(payload.timestamp)||Date.now(),
     data:{url:safeUrl},
