@@ -1,18 +1,25 @@
 {
-  "name": "FORM / ONE — Fitness",
-  "short_name": "FORM ONE",
-  "description": "Private workout, nutrition and Apple Health dashboard",
+  "name": "مدار | MADAR",
+  "short_name": "مدار",
+  "description": "مساحتك الخاصة للتدريب والنشاط والنوم والتقدم",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#101714",
-  "theme_color": "#101714",
+  "background_color": "#081422",
+  "theme_color": "#081422",
   "icons": [
     {
       "src": "./icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "lang": "ar"
 }
