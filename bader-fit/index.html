@@ -128,7 +128,7 @@ button{transition:background-color .16s ease,border-color .16s ease,filter .16s 
   const show=function(message){
     let e=document.getElementById('formone-diagnostic');
     if(!e){e=document.createElement('div');e.id='formone-diagnostic';e.style.cssText='position:fixed;z-index:99999;left:12px;right:12px;top:95px;max-width:680px;margin:auto;padding:16px;border:2px solid #ff7848;border-radius:14px;background:#242824;color:#fff;font:14px/1.5 system-ui;box-shadow:0 6px 30px #000a';document.body.appendChild(e)}
-    e.textContent='FORM / ONE diagnostic ('+build+'): '+message;
+    e.textContent='مدار • حالة التطبيق ('+build+'): '+message;
   };
   window.addEventListener('error',function(ev){show('JavaScript error: '+(ev.message||'unknown')+' at line '+(ev.lineno||'?'))});
   window.addEventListener('unhandledrejection',function(ev){show('Loading failed: '+String(ev.reason?.message||ev.reason||'unknown'))});
