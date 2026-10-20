@@ -98,7 +98,7 @@
       Nutrition:[[".fo-fuel-summary h2","الرصيد اليومي"],[".fo-meals h2","وجبات اليوم"]]
     };
     for(const [selector,text] of sectionCardTitles[which]||[]){
-      const el=app.querySelector(selector);if(el)el.textContent=text;
+      const el=app.querySelector(selector);if(el){const count=selector===".fo-meals h2"?(el.querySelector("small")?.textContent||""):"";el.textContent=text+(count?" "+count:"");}
     }
     if(which==="Plan"){
       app.querySelectorAll(".fo-plan-day .fo-day-meta strong").forEach(el=>{
