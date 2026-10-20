@@ -1,9 +1,9 @@
-/* FORM / ONE push-only Service Worker: no offline cache or Health data interception. */
+/* MADAR push-only Service Worker: no offline cache or Health data interception. */
 const HOME="https://frks-i.github.io/Bader-alqahtani/bader-fit/index.html";
 self.addEventListener("install",()=>self.skipWaiting());
 self.addEventListener("activate",event=>event.waitUntil(self.clients.claim()));
 self.addEventListener("push",event=>{
-  let payload={title:"FORM / ONE",body:"You have a new training update.",data:{url:HOME}};
+  let payload={title:"مدار",body:"لديك تحديث جديد في رحلتك اليومية.",data:{url:HOME}};
   try{
     if(event.data){
       const parsed=event.data.json();
