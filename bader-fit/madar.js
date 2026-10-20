@@ -163,7 +163,17 @@
     const tmp=document.createElement("template");
     tmp.innerHTML=html;
     const next=tmp.content.querySelector(selector);
-    if(next)patchNode(original,next);
+    if(!next)return;
+    // Keep Arabic dashboard headings stable when Health updates in place.
+    const title={
+      ".rings-panel":"حلقات النشاط",
+      ".fo-watch":"تحليل الساعة"
+    }[selector];
+    if(title){
+      const heading=next.querySelector("h2");
+      if(heading)heading.textContent=title;
+    }
+    patchNode(original,next);
   }
   window.madarUpdateHealth=function(){
     if(!uid||(view!=="Today"&&view!=="Progress"))return;
