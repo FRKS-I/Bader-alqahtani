@@ -398,3 +398,13 @@ main#app {
    animation:none!important;transition:none!important
  }
 }
+
+/* iOS Home Screen app: reserve the device's status-bar / Dynamic Island area.
+   The opaque status-bar meta makes the normal layout start below the status bar;
+   the safe-area rule protects already-installed PWAs that retain an older mode.
+   Do not apply this extra inset to ordinary Safari pages. */
+@media (display-mode: standalone) {
+  header {
+    padding-top: max(18px, calc(env(safe-area-inset-top, 0px) + 6px)) !important;
+  }
+}
