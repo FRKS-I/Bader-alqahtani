@@ -200,7 +200,7 @@
   const previousRender=render;
   render=function(){
     const oldApp=document.getElementById("app");
-    const samePage=!!oldApp&&oldApp.dataset.madarView===view&&oldApp.dataset.madarDay===day;
+    const samePage=!!oldApp&&oldApp.dataset.madarView===view&&oldApp.dataset.madarDay===day&&oldApp.dataset.madarAuth===(uid?"signed-in":"signed-out");
     const disclosures=samePage?
       Array.from(oldApp.querySelectorAll("details"),item=>item.open):null;
     const active=document.activeElement;
@@ -248,6 +248,7 @@
     }
     app.dataset.madarView=view;
     app.dataset.madarDay=day;
+    app.dataset.madarAuth=uid?"signed-in":"signed-out";
   };
   render();
 })();
