@@ -1,0 +1,15 @@
+/* FORM ONE Web Push controls — device-specific settings. */
+#app .fo-push-panel{border-left:4px solid #83d9ed!important;--fo-disc-bg:#275362;--fo-disc-color:#a4edff}
+#app .fo-push-status{padding:13px;border-radius:13px;background:#23382d;border:1px solid #54745d;color:#cef1d4;font-size:14px;font-weight:750;margin:12px 0}
+#app .fo-push-error{color:#ffbfaa}
+#app .fo-push-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+#app .fo-push-actions button{flex:1 1 auto;min-height:46px;font-size:13px}
+#app .fo-push-options{margin:14px 0;border-top:1px solid #55645b}
+#app .fo-push-option{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0;padding:12px 0;border-bottom:1px solid #435149}
+#app .fo-push-option>span{display:flex;flex-direction:column;gap:4px;min-width:0}
+#app .fo-push-option b{color:#eef5eb;font-size:15px}
+#app .fo-push-option small{color:#aebfb2!important;font-size:12px!important}
+#app .fo-push-option input[type=checkbox]{appearance:auto;-webkit-appearance:checkbox;accent-color:#a4eda9;min-height:25px;width:25px;min-width:25px;max-width:25px;padding:0!important}
+#app .fo-push-time-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+#app .fo-push-time-row select{width:100%;min-height:43px;background:#15271c!important;color:#f4f7ef!important;border:1px solid #6a806c!important;font-size:16px}
+@media(max-width:380px){#app .fo-push-time-row{grid-template-columns:1fr}}
