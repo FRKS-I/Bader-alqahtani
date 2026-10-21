@@ -32,7 +32,7 @@
   const BRAND="مدار";
   document.title="مدار | MADAR — مساحتك اليومية";
   const favicon=document.querySelector('link[rel="icon"]');
-  if(favicon)favicon.href="./icon.svg?v=madar2";
+  if(favicon)favicon.href="./icon.svg?v=fullmoon1";
 
   // One-time install instructions were declined. Do not permanently display them.
   if(typeof foInstallGuide==="function")foInstallGuide=function(){return ""};
@@ -53,7 +53,7 @@
     const hero=app.querySelector(".card.hero");
     if(hero){
       if(!hero.querySelector(".madar-orb-art")){
-        hero.insertAdjacentHTML("afterbegin",'<img class="madar-orb-art" src="./orbit.svg?v=1" alt="" aria-hidden="true" loading="eager">');
+        hero.insertAdjacentHTML("afterbegin",'<img class="madar-orb-art" src="./orbit.svg?v=fullmoon1" alt="" aria-hidden="true" loading="eager">');
       }
       const title=hero.querySelector("h1");
       if(title&&trainingNames[title.textContent.trim()]){
