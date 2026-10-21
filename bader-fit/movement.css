@@ -1,0 +1,60 @@
+/* MADAR — three-stage daily training: movement preparation / training / cooldown. */
+html{scroll-padding-top:17px}
+#app .md-stage-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px;margin:17px 0 12px;background:#122436;border:1px solid #50718d77;border-radius:19px;box-shadow:inset 0 2px 0 #ffffff0b,0 9px 19px #0004}
+#app .md-step{display:flex;align-items:center;justify-content:center;flex-direction:column;min-width:0;gap:2px;min-height:66px;text-align:center;background:#142b41;border:1px solid #4560788a;border-radius:13px;padding:9px 4px;text-decoration:none!important;color:#e4f4fc!important;transition:transform .2s ease,background .2s ease}
+#app .md-step:hover,#app .md-step:focus-visible{background:#23425b;transform:translateY(-1px)}
+#app .md-step b{font-variant-numeric:tabular-nums;color:#89dbf5;font-size:11px;font-weight:850;line-height:1.1}
+#app .md-step span{color:#ecf7ff;font-size:14px;font-weight:850}
+#app .md-step small{color:#aacbde!important;font-size:10px!important}
+#app .md-step.warm{border-top:3px solid #f0b27e}
+#app .md-step.train{border-top:3px solid #75d4ff}
+#app .md-step.cool{border-top:3px solid #a5a4e8}
+#app .md-phase{padding:19px 15px 15px;margin:13px 0 23px;background:linear-gradient(152deg,#192b3d,#0c1c2e);border:1px solid #607d9999;border-top-color:#89a7ba9c;border-radius:22px;box-shadow:inset 0 1px 0 #ffffff1c,0 15px 26px #0005;scroll-margin-top:22px}
+#app .md-phase.md-warm{border-left:4px solid #f0b27e}
+#app .md-phase.md-cool{border-left:4px solid #b2aaff}
+#app .md-phase-header{display:flex;align-items:center;gap:11px;margin:1px 0 14px;min-width:0}
+#app .md-phase-number{min-width:38px;height:42px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#f3d0a9;background:linear-gradient(145deg,#49382e,#302c32);border:1px solid #97735e75;box-shadow:inset 0 1px 0 #ffffff26,0 5px 9px #0005;font-variant-numeric:tabular-nums}
+#app .md-cool .md-phase-number{background:linear-gradient(145deg,#343257,#20253f);color:#cec5ff;border-color:#7e7ab078}
+#app .md-phase-headings{flex:1;min-width:0}
+#app .md-phase-kicker{letter-spacing:1.6px;color:#eca97c;font-size:10px;font-weight:850}
+#app .md-cool .md-phase-kicker{color:#b9b1ff}
+#app .md-phase h2{color:#f1f8ff!important;font-size:clamp(19px,5vw,25px)!important;font-weight:850!important;margin:2px 0 1px!important}
+#app .md-phase-headings p{margin:4px 0 0!important;font-size:12px!important;color:#c0cfde!important;line-height:1.55!important}
+#app .md-phase-progress{font-size:13px;font-weight:800;white-space:nowrap;color:#f4d09d;align-self:flex-start;background:#3b332e;border:1px solid #926c5477;border-radius:99px;padding:6px 9px}
+#app .md-cool .md-phase-progress{background:#2b2845;color:#c8b9ff;border-color:#7770a2}
+#app .md-phase-progressbar{height:6px;margin:0 0 16px;background:#354457;overflow:hidden;border-radius:99px;box-shadow:inset 0 2px 3px #0009}
+#app .md-phase-progressbar i{display:block;height:100%;background:linear-gradient(90deg,#cd9269,#f4c18c);border-radius:inherit;transition:width .3s ease}
+#app .md-cool .md-phase-progressbar i{background:linear-gradient(90deg,#817cc7,#ccbeff)}
+#app .md-guided-video{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;text-decoration:none!important;border:1px solid #8ab8ce87;background:linear-gradient(120deg,#23465b,#15364d);color:#d4f1ff!important;border-radius:14px;font-size:13px;font-weight:750;margin:0 0 12px}
+#app .md-guided-video:active{transform:scale(.99)}
+#app .md-movement-list{display:grid;gap:8px}
+#app .md-movement{display:flex;align-items:flex-start;gap:11px;padding:13px 11px;background:#102438;border:1px solid #4a6c8291;border-radius:15px;transition:background .25s ease,border-color .25s ease;min-width:0}
+#app .md-movement.md-checked{background:#14352d;border-color:#5d9e8c}
+#app .md-check{appearance:none;flex:0 0 42px;height:42px;min-height:42px!important;border-radius:13px!important;display:flex;align-items:center;justify-content:center;padding:0!important;font-size:23px!important;font-weight:900;color:#c4e6f4!important;background:#243f55!important;border:1px solid #5d8394!important;box-shadow:inset 0 1px 0 #ffffff26,0 3px 8px #0005!important}
+#app .md-checked .md-check{background:#27634e!important;color:#d6ffed!important;border-color:#6ccfae!important}
+#app .md-move-content{flex:1;min-width:0}
+#app .md-move-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:4px 10px}
+#app .md-move-top b{font-size:14px;color:#f3faff;font-weight:790;line-height:1.35}
+#app .md-move-top span{font-size:11px;color:#f2d0a3;font-variant-numeric:tabular-nums;white-space:normal;font-weight:700}
+#app .md-cool .md-move-top span{color:#c9bfff}
+#app .md-move-content>p{font-size:12px!important;color:#b6cbdc!important;line-height:1.6!important;margin:5px 0 9px!important}
+#app .md-video-link{font-size:12px!important;color:#89dfff!important;font-weight:770;display:inline-flex;align-items:center;min-height:30px;padding:4px 7px;margin-left:-7px;border-radius:8px}
+#app .md-video-link:focus-visible{outline:2px solid #78e2ff}
+#app .md-phase-note{font-size:12px!important;line-height:1.6!important;color:#adc2d1!important;border-top:1px solid #3e5970;margin:14px 0 0!important;padding-top:11px}
+#app .md-next-phase{display:block;margin-top:15px;border-radius:13px;text-align:center;background:linear-gradient(140deg,#66b6e3,#3b8cb7);color:#09263c!important;padding:12px 15px;font-size:14px;font-weight:850;text-decoration:none!important;box-shadow:inset 0 1px 0 #ffffff55,0 6px 12px #0005}
+#app .md-phase-done{text-align:center;color:#d2c8f8;font-weight:740;font-size:13px;margin-top:12px;padding:10px;background:#282a4a;border:1px solid #615f96;border-radius:12px}
+#app .md-training-heading{display:flex;align-items:center;gap:13px;padding:12px 4px;margin:28px 0 7px;font-size:19px;font-weight:900;scroll-margin-top:22px;color:#def4ff}
+#app .md-training-heading .md-phase-number{background:linear-gradient(145deg,#25526c,#153e57);border-color:#5596ba;color:#92ddff}
+#app .md-training-heading+.section-heading{margin-top:0!important}
+@media(max-width:420px){
+ #app .md-stage-nav{gap:5px;padding:5px}
+ #app .md-phase{padding:15px 10px 13px;border-radius:18px}
+ #app .md-phase-header{gap:8px}
+ #app .md-phase-number{min-width:33px;height:38px}
+ #app .md-movement{gap:9px;padding:10px 9px}
+ #app .md-check{flex-basis:38px;height:38px;min-height:38px!important}
+ #app .md-move-top{display:block}
+ #app .md-move-top span{display:block;padding-top:3px}
+ #app .md-phase h2{font-size:20px!important}
+}
+@media(prefers-reduced-motion:reduce){#app .md-stage-nav *,#app .md-phase *,#app .md-next-phase{transition:none!important;animation:none!important}}
