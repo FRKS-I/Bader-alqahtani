@@ -70,12 +70,19 @@ async function foPushUpdate(values){
 function foPushToggle(key,v){foPushUpdate({[key]:v})}
 function foPushHour(key,v){const n=Number(v);if(Number.isInteger(n)&&n>=0&&n<24)foPushUpdate({[key]:n})}
 let foRestId=null;
+let foRestRequest=Promise.resolve();
+window.madarRestFinished=function(){
+ if(!foRestId||!foPushState.subscribed||!foPushState.enabled)return;
+ foRestId=null;
+ // Cancel the background reminder when an audible foreground timer already fired.
+ foRestRequest.catch(()=>{}).then(()=>foPushRequest("rest_cancel")).catch(e=>console.warn("Rest cancellation unavailable",e));
+};
 const foTimerPushBase=timer;
 timer=function(s){
  const secondsNumber=Math.max(1,Math.round(Number(s)||30));foTimerPushBase(secondsNumber);
  if(!foPushState.subscribed||!foPushState.enabled||foPushState.preferences.rest===false)return;
  const id=crypto.randomUUID();foRestId=id;
- foPushRequest("rest_schedule",{timer_id:id,due_at:new Date(Date.now()+secondsNumber*1000).toISOString(),exercise_name:current()?.ex?.[ix]?.n||""}).catch(e=>console.warn("Rest push unavailable",String(e.message||e)))
+ foRestRequest=foRestRequest.catch(()=>{}).then(()=>foPushRequest("rest_schedule",{timer_id:id,due_at:new Date(Date.now()+secondsNumber*1000).toISOString(),exercise_name:current()?.ex?.[ix]?.n||""})).catch(e=>console.warn("Rest push unavailable",String(e.message||e)))
 };
 const foSettingsPushBase=settings;
 settings=function(){return foPushPanel()+foSettingsPushBase()};
