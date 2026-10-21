@@ -16,6 +16,11 @@ const mdVideo={
  scapula:"https://youtu.be/Kn9mAgIhBW0",
  hinge:"https://resources.specialolympics.org/sports-essentials/sports-and-coaching/warm-up-and-cool-down-videos/dynamic-warm-up-hip-hinges",
  presswarm:"https://www.teamgb.com/video/shauna-coxseys-warm-up-routine/7mfuGIyBGDuS2eRbbFOcnv",
+ pecvideo:"https://www.askdoctorjo.com/pec-stretch-improve-posture/",
+ latvideo:"https://www.youtube.com/watch?v=XJ6_0Pi0ysM",
+ shouldervideo:"https://www.askdoctorjo.com/video/shoulder-pain-relief-stretches-5-minute-real-time-routine/",
+ wristvideo:"https://www.youtube.com/watch?v=i-JV2PsFzWA",
+ quadvideo:"https://www.askdoctorjo.com/real-time-standing-quad-stretch/",
  ankle:"https://www.youtube.com/watch?v=mzTQGYGI0Ng",
  hip:"https://www.youtube.com/watch?v=IQ-h2WuJhXM",
  ham:"https://www.youtube.com/watch?v=oRdXgERlSag",
@@ -32,10 +37,10 @@ const mdRoutine=[
    mdItem("wallpush","ضغط الحائط الخفيف","8–10 تكرارات","ضع الكفين على الحائط واثنِ المرفقين بتحكم، لتجهيز الصدر والكتف.","wallpush"),
    mdItem("ramp","مجموعتا تهيئة Chest Press","8 ثم 5 تكرارات","الأولى نحو 40–50% ثم 60–70% من وزن عملك المعتاد؛ راحة قصيرة، ولا تُحسب من مجموعات التمرين.","presswarm")
  ],cool:[
-   mdItem("chest","إطالة الصدر على الباب","20–30 ثانية لكل جهة","راحة اليد والساعد قرب إطار الباب، خطوة صغيرة للأمام حتى شد خفيف فقط.","doorway chest stretch physical therapist"),
-   mdItem("lat","إطالة العضلة العريضة للظهر","20–30 ثانية لكل جهة","ضع يديك على طاولة ثابتة وارجع بالوركين للخلف قليلًا دون ضغط على أسفل الظهر.","lat stretch desk physiotherapy"),
-   mdItem("shoulder","إطالة الكتف خلف الجسم","20–30 ثانية لكل جهة","مرر الذراع أمام صدرك واسندها بالأخرى برفق، دون سحب قوي.","cross body shoulder stretch doctor jo"),
-   mdItem("biceps","إطالة الساعد والرسغ","20 ثانية لكل جهة","ابسط الذراع ومدد الرسغ بلطف، ولا تضغط على المفاصل.","wrist flexor stretch physio")
+   mdItem("chest","إطالة الصدر على الباب","20–30 ثانية لكل جهة","راحة اليد والساعد قرب إطار الباب، خطوة صغيرة للأمام حتى شد خفيف فقط.","pecvideo"),
+   mdItem("lat","إطالة العضلة العريضة للظهر","20–30 ثانية لكل جهة","ضع يديك على طاولة ثابتة وارجع بالوركين للخلف قليلًا دون ضغط على أسفل الظهر.","latvideo"),
+   mdItem("shoulder","إطالة الكتف خلف الجسم","20–30 ثانية لكل جهة","مرر الذراع أمام صدرك واسندها بالأخرى برفق، دون سحب قوي.","shouldervideo"),
+   mdItem("biceps","إطالة الساعد والرسغ","20 ثانية لكل جهة","ابسط الذراع ومدد الرسغ بلطف، ولا تضغط على المفاصل.","wristvideo")
  ]},
  {kind:"lower",warm:[
    mdItem("walk","مشي متدرج","دقيقتان","ابدأ بالمشي الهادئ، ثم زد السرعة قليلًا لتنشيط الساقين.","lower"),
@@ -45,7 +50,7 @@ const mdRoutine=[
    mdItem("hinge","ثني الورك بدون وزن (Hip hinge)","8 تكرارات","ادفع الوركين للخلف والظهر محايد؛ جرّب حركة الـRDL بدون دمبل.","hinge"),
    mdItem("ramp","مجموعتا تهيئة للتمرين الأول","8 ثم 5 تكرارات","ابدأ بحركة خفيفة ثم وزن نحو 50–70% من وزن العمل إذا كان آمنًا ومتاحًا؛ لا تُحسب من المجموعات الأساسية.","lower")
  ],cool:[
-   mdItem("quads","إطالة الفخذ الأمامي","20–30 ثانية لكل جهة","تمسك بجدار وارفع الكعب ناحية المقعدة حتى شد مريح، دون تقويس الظهر.","standing quadriceps stretch doctor jo"),
+   mdItem("quads","إطالة الفخذ الأمامي","20–30ثانية لكل جهة","تمسك بجدار وارفع الكعب ناحية المقعدة حتى شد مريح، دون تقويس الظهر.","quadvide o"),
    mdItem("ham","إطالة خلف الفخذ","20–30 ثانية لكل جهة","مدّ ساقًا أمامك وامِل من مفصل الورك مع إبقاء الظهر مستقيمًا.","ham"),
    mdItem("calf","إطالة بطة الساق","20–30 ثانية لكل جهة","استند إلى جدار وثبت الكعب الخلفي على الأرض، دون ألم في الركبة.","calf"),
    mdItem("hipflex","إطالة مثنيات الورك","20–30 ثانية لكل جهة","اتخذ وضع نصف ركوع مع شد بسيط للأرداف وحرك الحوض للأمام قليلًا.","hip")
@@ -57,7 +62,7 @@ const mdRoutine=[
    mdItem("ankle","دوائر الكاحل","8 في كل اتجاه لكل قدم","دوّر الكاحل ببطء وحافظ على حركة محدودة ومريحة.","ankle")
  ],cool:[
    mdItem("hipflex","إطالة مقدمة الورك","20 ثانية لكل جهة","ثبّت الجذع واشعر بشد لطيف أمام الورك.","hip"),
-   mdItem("chest","فتح الصدر بلطف","20 ثانية لكل جهة","إطالة بسيطة عند الباب، دون فرد الذراع للخلف بشدة.","doorway pec stretch physical therapy"),
+   mdItem("chest","فتح الصدر بلطف","20 ثانية لكل جهة","إطالة بسيطة عند الباب، دون فرد الذراع للخلف بشدة.","pecvideo"),
    mdItem("calf","إطالة السمانة","20 ثانية لكل جهة","تحرك باتجاه الحائط والكعب مستقر بالأرض.","calf"),
    mdItem("breath","تهدئة التنفس","دقيقة واحدة","شهيق أنفي مريح وزفير أطول قليلًا، دون حبس النفس.","recovery")
  ]},
@@ -67,7 +72,7 @@ const mdRoutine=[
    mdItem("leg","تأرجح الساق","10 لكل جهة","استند على الجدار وحرك الساق أمامًا وخلفًا بمدى صغير.","leg"),
    mdItem("speed","زيادة السرعة تدريجيًا","دقيقتان","ارفع سرعة السير أو ميله تدريجيًا، ثم ابدأ دقائق الكارديو المقررة.","lower")
  ],cool:[
-   mdItem("slow","مشي بطيء","دقيقتان","انزل بالسرعة تدريجيًا بدل التوقف المفاجئ.","easy walking cool down"),
+   mdItem("slow","مشي بطيء","دقيقتان","انزل بالسرعة تدريجيًا بدل التوقف المفاجئ.","lower"),
    mdItem("calf","إطالة السمانة","20–30 ثانية لكل جهة","تحكم في الكعب وثبته على الأرض.","calf"),
    mdItem("ham","إطالة خلف الفخذ","20–30 ثانية لكل جهة","امِل من الورك مع انحناء بسيط للركبة إذا لزم.","ham"),
    mdItem("hipflex","إطالة مقدمة الورك","20–30 ثانية لكل جهة","تمدّد بمدى بسيط ودون مبالغة.","hip")
