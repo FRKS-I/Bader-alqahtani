@@ -4,6 +4,10 @@
 */
 const mdVideo={
  upper:"https://www.youtube.com/watch?v=uodkIIcXtRk",
+ arm:"https://youtu.be/hniUI4ykF64",
+ leg:"https://youtu.be/dgZdWsoJiHg",
+ squat:"https://youtu.be/FGMRgTr4Syc",
+ march:"https://www.youtube.com/watch?v=dt7FAEYRLC4",
  lower:"https://www.hodgsonstrength.com/post/5-minute-lower-body-warm-up",
  recovery:"https://www.youtube.com/watch?v=H7eFjFoGkHY",
  catcow:"https://www.youtube.com/watch?v=a0wyBGg4aWw",
@@ -18,8 +22,8 @@ const mdVideo={
 function mdItem(id,name,duration,explain,videoOrQuery){return{id,name,duration,explain,video:mdVideo[videoOrQuery]||"",query:mdVideo[videoOrQuery]?"":videoOrQuery}}
 const mdRoutine=[
  {kind:"upper",warm:[
-   mdItem("walk","مشي خفيف وتنشيط الذراعين","دقيقتان","امشِ بوتيرة مريحة وزِد حركة الذراعين تدريجيًا، دون لهاث.","upper"),
-   mdItem("shoulders","دوائر الكتفين والذراعين","30 ثانية لكل اتجاه","دوائر صغيرة تكبر تدريجيًا، بلا ألم أو رفع مفرط للكتف.","upper"),
+   mdItem("walk","مشي خفيف وتنشيط الذراعين","دقيقتان","امشِ بوتيرة مريحة وزِد حركة الذراعين تدريجيًا، دون لهاث.","march"),
+   mdItem("shoulders","دوائر الكتفين والذراعين","30 ثانية لكل اتجاه","دوائر صغيرة تكبر تدريجيًا، بلا ألم أو رفع مفرط للكتف.","arm"),
    mdItem("scapula","سحب لوحي الكتف للخلف","10–12 تكرارًا","اسحب اللوحين للخلف والأسفل بهدوء، ثم اتركهما يعودان، دون هز الرقبة.","upper"),
    mdItem("wallpush","ضغط الحائط الخفيف","8–10 تكرارات","ضع الكفين على الحائط واثنِ المرفقين بتحكم، لتجهيز الصدر والكتف.","wallpush"),
    mdItem("ramp","مجموعتا تهيئة Chest Press","8 ثم 5 تكرارات","الأولى نحو 40–50% ثم 60–70% من وزن عملك المعتاد؛ راحة قصيرة، ولا تُحسب من مجموعات التمرين.","Chest Press warmup light sets gym")
@@ -32,8 +36,8 @@ const mdRoutine=[
  {kind:"lower",warm:[
    mdItem("walk","مشي متدرج","دقيقتان","ابدأ بالمشي الهادئ، ثم زد السرعة قليلًا لتنشيط الساقين.","lower"),
    mdItem("hip","فتح الورك بحركة دائرية","8 لكل جهة","استند على حائط، وارسم دائرة صغيرة بالركبة دون تحريك الظهر.","standing hip circles warm up exercise"),
-   mdItem("leg","تأرجح الساق للأمام والخلف","10 لكل ساق","استند على الحائط وحرك الساق بمدى مريح دون ركل أو اندفاع.","leg swings front back dynamic warmup"),
-   mdItem("squat","سكوات بوزن الجسم","10 تكرارات","انزل قليلًا وتحكم بمحاذاة الركبة، مع ثبات القدمين.","lower"),
+   mdItem("leg","تأرجح الساق للأمام والخلف","10 لكل ساق","استند على الحائط وحرك الساق بمدى مريح دون ركل أو اندفاع.","leg"),
+   mdItem("squat","سكوات بوزن الجسم","10 تكرارات","انزل قليلًا وتحكم بمحاذاة الركبة، مع ثبات القدمين.","squat"),
    mdItem("hinge","ثني الورك بدون وزن (Hip hinge)","8 تكرارات","ادفع الوركين للخلف والظهر محايد؛ جرّب حركة الـRDL بدون دمبل.","bodyweight hip hinge drill exercise"),
    mdItem("ramp","مجموعتا تهيئة للتمرين الأول","8 ثم 5 تكرارات","ابدأ بحركة خفيفة ثم وزن نحو 50–70% من وزن العمل إذا كان آمنًا ومتاحًا؛ لا تُحسب من المجموعات الأساسية.","lower")
  ],cool:[
@@ -56,7 +60,7 @@ const mdRoutine=[
  {kind:"endurance",warm:[
    mdItem("walk","مشي مريح","دقيقتان","ابدأ عند سرعة مريحة ولا تبدأ الكارديو بسرعة عالية.","lower"),
    mdItem("ankle","حركة الكاحل والكعب","10 تكرارات","ارفع الكعب ثم الأصابع بالتبادل لتنشيط مفصل الكاحل.","ankle"),
-   mdItem("leg","تأرجح الساق","10 لكل جهة","استند على الجدار وحرك الساق أمامًا وخلفًا بمدى صغير.","leg swings walking warmup"),
+   mdItem("leg","تأرجح الساق","10 لكل جهة","استند على الجدار وحرك الساق أمامًا وخلفًا بمدى صغير.","leg"),
    mdItem("speed","زيادة السرعة تدريجيًا","دقيقتان","ارفع سرعة السير أو ميله تدريجيًا، ثم ابدأ دقائق الكارديو المقررة.","walking treadmill warm up easy")
  ],cool:[
    mdItem("slow","مشي بطيء","دقيقتان","انزل بالسرعة تدريجيًا بدل التوقف المفاجئ.","easy walking cool down"),
@@ -131,11 +135,14 @@ today=function(){
  const html=mdCoreToday();
  if(!uid)return html;
  const r=mdDayRoutine(mdDayIndex());
- const prefix=mdStagesNav(r.warm,r.cool)+mdStage("warm",r.warm,r.video);
+ const stageNav=mdStagesNav(r.warm,r.cool);const prefix=mdStage("warm",r.warm,r.video);
  const trainingMarker='<div class="section-heading"><div><span class="section-kicker">THE WORK</span>';
  const workoutAnchor='<div id="madar-training" class="md-training-heading"><span class="md-phase-number">02</span><span>تمارين اليوم</span></div>';
  const footer=mdStage("cool",r.cool);
  let out=html;
+ const activityMarker='<div class="card rings-panel">';
+ if(out.includes(activityMarker))out=out.replace(activityMarker,stageNav+activityMarker);
+ else out=stageNav+out;
  if(out.includes(trainingMarker))out=out.replace(trainingMarker,prefix+workoutAnchor+trainingMarker);
  else out=prefix+workoutAnchor+out;
  const endButton='<button class="end-day"';
