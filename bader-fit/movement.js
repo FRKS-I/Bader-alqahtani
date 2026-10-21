@@ -10,8 +10,12 @@ const mdVideo={
  march:"https://www.youtube.com/watch?v=dt7FAEYRLC4",
  lower:"https://www.youtube.com/watch?v=QLkLKfL_7F0",
  recovery:"https://www.youtube.com/watch?v=Rrs2vY6A3lE",
- catcow:"https://www.youtube.com/watch?v=a0wyBGg4aWw",
- wallpush:"https://www.youtube.com/watch?v=QpMTk21EmaM",
+ catcow:"https://www.youtube.com/watch?v=cg2-Ha4zaJw",
+ wallpush:"https://www.youtube.com/watch?v=wIPJvBQs7RA",
+ hipcircles:"https://www.youtube.com/watch?v=oU_oVMJL3-8",
+ scapula:"https://youtu.be/Kn9mAgIhBW0",
+ hinge:"https://resources.specialolympics.org/sports-essentials/sports-and-coaching/warm-up-and-cool-down-videos/dynamic-warm-up-hip-hinges",
+ presswarm:"https://www.teamgb.com/video/shauna-coxseys-warm-up-routine/7mfuGIyBGDuS2eRbbFOcnv",
  ankle:"https://www.youtube.com/watch?v=mzTQGYGI0Ng",
  hip:"https://www.youtube.com/watch?v=IQ-h2WuJhXM",
  ham:"https://www.youtube.com/watch?v=oRdXgERlSag",
@@ -24,9 +28,9 @@ const mdRoutine=[
  {kind:"upper",warm:[
    mdItem("walk","مشي خفيف وتنشيط الذراعين","دقيقتان","امشِ بوتيرة مريحة وزِد حركة الذراعين تدريجيًا، دون لهاث.","march"),
    mdItem("shoulders","دوائر الكتفين والذراعين","30 ثانية لكل اتجاه","دوائر صغيرة تكبر تدريجيًا، بلا ألم أو رفع مفرط للكتف.","arm"),
-   mdItem("scapula","سحب لوحي الكتف للخلف","10–12 تكرارًا","اسحب اللوحين للخلف والأسفل بهدوء، ثم اتركهما يعودان، دون هز الرقبة.","upper"),
+   mdItem("scapula","سحب لوحي الكتف للخلف","10–12 تكرارًا","اسحب اللوحين للخلف والأسفل بهدوء، ثم اتركهما يعودان، دون هز الرقبة.","scapula"),
    mdItem("wallpush","ضغط الحائط الخفيف","8–10 تكرارات","ضع الكفين على الحائط واثنِ المرفقين بتحكم، لتجهيز الصدر والكتف.","wallpush"),
-   mdItem("ramp","مجموعتا تهيئة Chest Press","8 ثم 5 تكرارات","الأولى نحو 40–50% ثم 60–70% من وزن عملك المعتاد؛ راحة قصيرة، ولا تُحسب من مجموعات التمرين.","Chest Press warmup light sets gym")
+   mdItem("ramp","مجموعتا تهيئة Chest Press","8 ثم 5 تكرارات","الأولى نحو 40–50% ثم 60–70% من وزن عملك المعتاد؛ راحة قصيرة، ولا تُحسب من مجموعات التمرين.","presswarm")
  ],cool:[
    mdItem("chest","إطالة الصدر على الباب","20–30 ثانية لكل جهة","راحة اليد والساعد قرب إطار الباب، خطوة صغيرة للأمام حتى شد خفيف فقط.","doorway chest stretch physical therapist"),
    mdItem("lat","إطالة العضلة العريضة للظهر","20–30 ثانية لكل جهة","ضع يديك على طاولة ثابتة وارجع بالوركين للخلف قليلًا دون ضغط على أسفل الظهر.","lat stretch desk physiotherapy"),
@@ -35,10 +39,10 @@ const mdRoutine=[
  ]},
  {kind:"lower",warm:[
    mdItem("walk","مشي متدرج","دقيقتان","ابدأ بالمشي الهادئ، ثم زد السرعة قليلًا لتنشيط الساقين.","lower"),
-   mdItem("hip","فتح الورك بحركة دائرية","8 لكل جهة","استند على حائط، وارسم دائرة صغيرة بالركبة دون تحريك الظهر.","standing hip circles warm up exercise"),
+   mdItem("hip","فتح الورك بحركة دائرية","8 لكل جهة","استند على حائط، وارسم دائرة صغيرة بالركبة دون تحريك الظهر.","hipcircles"),
    mdItem("leg","تأرجح الساق للأمام والخلف","10 لكل ساق","استند على الحائط وحرك الساق بمدى مريح دون ركل أو اندفاع.","leg"),
    mdItem("squat","سكوات بوزن الجسم","10 تكرارات","انزل قليلًا وتحكم بمحاذاة الركبة، مع ثبات القدمين.","squat"),
-   mdItem("hinge","ثني الورك بدون وزن (Hip hinge)","8 تكرارات","ادفع الوركين للخلف والظهر محايد؛ جرّب حركة الـRDL بدون دمبل.","bodyweight hip hinge drill exercise"),
+   mdItem("hinge","ثني الورك بدون وزن (Hip hinge)","8 تكرارات","ادفع الوركين للخلف والظهر محايد؛ جرّب حركة الـRDL بدون دمبل.","hinge"),
    mdItem("ramp","مجموعتا تهيئة للتمرين الأول","8 ثم 5 تكرارات","ابدأ بحركة خفيفة ثم وزن نحو 50–70% من وزن العمل إذا كان آمنًا ومتاحًا؛ لا تُحسب من المجموعات الأساسية.","lower")
  ],cool:[
    mdItem("quads","إطالة الفخذ الأمامي","20–30 ثانية لكل جهة","تمسك بجدار وارفع الكعب ناحية المقعدة حتى شد مريح، دون تقويس الظهر.","standing quadriceps stretch doctor jo"),
@@ -49,7 +53,7 @@ const mdRoutine=[
  {kind:"posture",warm:[
    mdItem("walk","مشي خفيف","دقيقتان","نشيط هادئ على السير دون رفع سرعة قوي.","lower"),
    mdItem("cat","حركة Cat–Cow","8 تكرارات","على أربع، بدّل بين تقويس الظهر وتمديده بلطف دون ضغط.","catcow"),
-   mdItem("scapula","سحب لوحي الكتف","10 تكرارات","ارجع بالكتفين للخلف والأسفل من غير رفع الرقبة.","upper"),
+   mdItem("scapula","سحب لوحي الكتف","10 تكرارات","ارجع بالكتفين للخلف والأسفل من غير رفع الرقبة.","scapula"),
    mdItem("ankle","دوائر الكاحل","8 في كل اتجاه لكل قدم","دوّر الكاحل ببطء وحافظ على حركة محدودة ومريحة.","ankle")
  ],cool:[
    mdItem("hipflex","إطالة مقدمة الورك","20 ثانية لكل جهة","ثبّت الجذع واشعر بشد لطيف أمام الورك.","hip"),
@@ -61,7 +65,7 @@ const mdRoutine=[
    mdItem("walk","مشي مريح","دقيقتان","ابدأ عند سرعة مريحة ولا تبدأ الكارديو بسرعة عالية.","lower"),
    mdItem("ankle","حركة الكاحل والكعب","10 تكرارات","ارفع الكعب ثم الأصابع بالتبادل لتنشيط مفصل الكاحل.","ankle"),
    mdItem("leg","تأرجح الساق","10 لكل جهة","استند على الجدار وحرك الساق أمامًا وخلفًا بمدى صغير.","leg"),
-   mdItem("speed","زيادة السرعة تدريجيًا","دقيقتان","ارفع سرعة السير أو ميله تدريجيًا، ثم ابدأ دقائق الكارديو المقررة.","walking treadmill warm up easy")
+   mdItem("speed","زيادة السرعة تدريجيًا","دقيقتان","ارفع سرعة السير أو ميله تدريجيًا، ثم ابدأ دقائق الكارديو المقررة.","lower")
  ],cool:[
    mdItem("slow","مشي بطيء","دقيقتان","انزل بالسرعة تدريجيًا بدل التوقف المفاجئ.","easy walking cool down"),
    mdItem("calf","إطالة السمانة","20–30 ثانية لكل جهة","تحكم في الكعب وثبته على الأرض.","calf"),
