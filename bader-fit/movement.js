@@ -77,8 +77,12 @@ const mdRoutine=[
  ]}
 ];
 function mdDayRoutine(index){
- if(index===0||index===3)return{...mdRoutine[0],day:plan[index].name,video:mdVideo.upper};
- if(index===1||index===4)return{...mdRoutine[1],day:plan[index].name,video:mdVideo.lower};
+ if(index===0)return{...mdRoutine[0],day:plan[index].name,video:mdVideo.upper};
+ if(index===3)return{...mdRoutine[0],day:plan[index].name,video:mdVideo.upper,
+  warm:mdRoutine[0].warm.map(item=>item.id!=="ramp"?item:mdItem("ramp","تهيئة Push-up وLat Pulldown","مجموعتان خفيفتان","6 تكرارات ضغط حائط أو ضغط مائل، ثم 8–10 سحبات Lat Pulldown بوزن خفيف. لا تحسبها من مجموعاتك الأساسية.","upper"))};
+ if(index===1)return{...mdRoutine[1],day:plan[index].name,video:mdVideo.lower};
+ if(index===4)return{...mdRoutine[1],day:plan[index].name,video:mdVideo.lower,
+  warm:mdRoutine[1].warm.map(item=>item.id!=="ramp"?item:mdItem("ramp","تهيئة Split Squat","8 لكل ساق ثم 5 لكل ساق","الجولة الأولى Split Squat بدون دمبل مع دعم، ثم جولة خفيفة إذا أمكن؛ لا تحتاج إلى وزن ثقيل.","lower"))};
  if(index===2)return{...mdRoutine[2],day:plan[index].name,video:mdVideo.upper};
  if(index===5)return{...mdRoutine[3],day:plan[index].name,video:mdVideo.lower};
  return{...mdRoutine[4],day:plan[index].name,video:mdVideo.recovery};
