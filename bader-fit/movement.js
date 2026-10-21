@@ -3,21 +3,21 @@
    Saves only user_data.payload.workouts[day].routineChecklist; no new database or auth.
 */
 const mdVideo={
- upper:"https://www.youtube.com/watch?v=uodkIIcXtRk",
+ upper:"https://www.youtube.com/watch?v=k9MY1ijAvGo",
  arm:"https://youtu.be/hniUI4ykF64",
  leg:"https://youtu.be/dgZdWsoJiHg",
  squat:"https://youtu.be/FGMRgTr4Syc",
  march:"https://www.youtube.com/watch?v=dt7FAEYRLC4",
- lower:"https://www.hodgsonstrength.com/post/5-minute-lower-body-warm-up",
- recovery:"https://www.youtube.com/watch?v=H7eFjFoGkHY",
+ lower:"https://www.youtube.com/watch?v=QLkLKfL_7F0",
+ recovery:"https://www.youtube.com/watch?v=Rrs2vY6A3lE",
  catcow:"https://www.youtube.com/watch?v=a0wyBGg4aWw",
  wallpush:"https://www.youtube.com/watch?v=QpMTk21EmaM",
  ankle:"https://www.youtube.com/watch?v=mzTQGYGI0Ng",
  hip:"https://www.youtube.com/watch?v=IQ-h2WuJhXM",
  ham:"https://www.youtube.com/watch?v=oRdXgERlSag",
- calf:"https://www.youtube.com/watch?v=6ifswsHkwlA",
+ calf:"https://www.youtube.com/watch?v=0xd5KRCQP-s",
  glute:"https://www.youtube.com/watch?v=63oscRDvoYw",
- stretch:"https://www.youtube.com/watch?v=H7eFjFoGkHY"
+ stretch:"https://www.youtube.com/watch?v=myN0dGpJabc"
 };
 function mdItem(id,name,duration,explain,videoOrQuery){return{id,name,duration,explain,video:mdVideo[videoOrQuery]||"",query:mdVideo[videoOrQuery]?"":videoOrQuery}}
 const mdRoutine=[
