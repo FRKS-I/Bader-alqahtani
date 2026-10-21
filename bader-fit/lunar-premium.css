@@ -1,0 +1,280 @@
+/* MADAR / lunar edition — expressive full-moon brand.
+   Visual-only layer. Existing state, workout flows and Apple Health synchronization stay untouched. */
+:root{
+ --lunar-cream:#fff0d6;--lunar-ivory:#d9c9af;--lunar-gold:#e4b981;
+ --lunar-navy:#070e1b;--lunar-blue:#7eafe1;--lunar-lines:rgba(193,211,229,.15);
+}
+html{background:#050a14!important}
+body{
+ background:
+ radial-gradient(ellipse 75% 27% at 71% 2%,rgba(85,130,188,.19),transparent 79%),
+ radial-gradient(ellipse 48% 30% at 8% 39%,rgba(71,83,135,.11),transparent 84%),
+ linear-gradient(180deg,#050b16 0%,#081222 43%,#060c18 100%)!important;
+ color:#f5f3ee!important;
+ background-attachment:fixed!important;
+}
+body:before{
+ background:
+ radial-gradient(circle at 86% 10%,rgba(230,207,164,.14),transparent 27%),
+ radial-gradient(circle at 18% 56%,rgba(44,88,135,.11),transparent 28%),
+ radial-gradient(1px 1px at 13% 17%,#e5d9c9 99%,transparent),
+ radial-gradient(1px 1px at 77% 31%,#d8dee8 99%,transparent),
+ radial-gradient(1px 1px at 44% 76%,#a5c4d9 99%,transparent)!important;
+ background-size:100% 100%,100% 100%,270px 310px,390px 410px,440px 350px!important;
+ opacity:.56!important;
+}
+header{
+ max-width:812px!important;min-height:94px!important;
+ padding:21px 3px 17px!important;
+ border-bottom:1px solid rgba(205,213,229,.07);
+}
+header .brand{gap:13px!important;align-items:center!important}
+header .madar-icon{
+ width:56px!important;height:56px!important;border-radius:17px!important;
+ border:1px solid rgba(248,226,184,.26)!important;
+ box-shadow:0 10px 22px rgba(0,0,0,.54),0 0 23px rgba(219,184,129,.12),inset 0 1px 0 rgba(255,255,255,.24)!important;
+ object-fit:cover;
+}
+header .madar-wordmark{gap:4px!important}
+header .madar-wordmark .arabic{font-weight:900!important;font-size:32px!important;letter-spacing:-1.2px!important;color:#fcf5e7!important;text-shadow:0 2px 13px rgba(240,209,167,.08)!important}
+header .madar-wordmark .latin{color:#d0ac7d!important;letter-spacing:3px!important;font-size:9px!important}
+header #status.pill{
+ background:linear-gradient(120deg,rgba(17,31,52,.96),rgba(21,31,49,.96))!important;
+ border-color:rgba(216,195,162,.22)!important;
+ color:#d4cfca!important;
+ box-shadow:inset 0 1px 0 #fff1d30c,0 7px 17px #0004!important;
+}
+main#app{max-width:812px!important;padding:0 17px 22px!important}
+#app h1,#app h2,#app h3,#app h4{color:#f7f4f0!important}
+#app .section-kicker,#app .fo-page-heading .section-kicker{
+ color:#e6c18f!important;letter-spacing:1.35px!important;font-weight:850!important;
+}
+#app .madar-hello{margin:15px 4px 16px!important;align-items:center!important}
+#app .madar-hello strong{font-size:25px!important;color:#faf5ec!important;font-weight:850!important}
+#app .madar-hello span,#app .madar-hello .madar-date{color:#aebbd0!important}
+#app .madar-hello div span{color:#d5b891!important;font-size:11px!important}
+#app .card.hero{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ min-height:274px!important;
+ margin:8px 0 22px!important;padding:25px 23px 21px!important;
+ background:
+ linear-gradient(110deg,#0c182b 1%,#101e35 40%,#0b182b 90%)!important;
+ border:1px solid rgba(221,193,153,.39)!important;
+ border-top-color:rgba(255,237,199,.6)!important;
+ border-radius:29px!important;
+ box-shadow:inset 0 1px 0 rgba(255,245,226,.20),
+  inset 0 -18px 47px rgba(1,8,19,.46),
+  0 22px 54px rgba(0,0,0,.43),0 2px 0 rgba(253,212,158,.08)!important;
+}
+#app .card.hero:before{
+ content:""!important;position:absolute!important;inset:0!important;
+ background:
+ linear-gradient(90deg,rgba(7,15,31,.86) 0%,rgba(7,17,34,.66) 41%,rgba(6,17,31,.04) 100%),
+ url("./lunar-horizon.svg") center bottom / cover no-repeat!important;
+ z-index:-1!important;opacity:1!important;pointer-events:none;
+}
+#app .card.hero:after{
+ content:""!important;position:absolute!important;inset:0!important;
+ display:block!important;
+ background:linear-gradient(180deg,rgba(255,243,217,.035),transparent 30%,rgba(3,10,19,.47) 100%);
+ z-index:0!important;pointer-events:none!important;
+ animation:none!important;
+}
+#app .card.hero .madar-orb-art{
+ position:absolute!important;right:-27px!important;top:-23px!important;
+ width:clamp(221px,48vw,318px)!important;height:clamp(221px,48vw,318px)!important;
+ object-fit:contain!important;opacity:1!important;
+ z-index:1!important;
+ filter:drop-shadow(0 11px 24px rgba(242,220,175,.23)) drop-shadow(0 17px 24px #0008)!important;
+ animation:madarMoonHover 10s ease-in-out infinite alternate!important;
+}
+#app .card.hero .todaytag{
+ border:1px solid rgba(243,210,161,.45)!important;
+ background:rgba(104,82,56,.3)!important;color:#ffebc4!important;
+ font-size:10px!important;font-weight:850!important;letter-spacing:.7px!important;
+ backdrop-filter:blur(8px)!important;
+}
+#app .card.hero h1{
+ font-weight:900!important;
+ max-width:68%!important;
+ font-size:clamp(34px,8.7vw,58px)!important;
+ line-height:1.18!important;letter-spacing:-1.05px!important;
+ color:#fff8ed!important;
+ text-shadow:0 4px 20px #0206107a!important;
+ position:relative;z-index:3!important;
+}
+#app .card.hero>p{
+ max-width:69%!important;color:#dfdbd3!important;
+ text-shadow:0 2px 12px #02070b!important;
+ position:relative!important;z-index:3!important;
+}
+#app .card.hero .section-kicker{color:#f8dbb0!important}
+#app .card.hero .feature-strip{
+ position:relative!important;z-index:3!important;
+ padding-top:8px!important;margin:20px 0 14px!important;
+}
+#app .card.hero .feature-strip span{
+ background:rgba(8,18,31,.62)!important;
+ border:1px solid rgba(227,220,200,.22)!important;
+ box-shadow:inset 0 1px 0 rgba(255,240,210,.075),0 6px 15px #0004!important;
+ backdrop-filter:blur(10px);
+}
+#app .card.hero .feature-strip b{color:#fff1d5!important}
+#app .card.hero .bar{background:rgba(226,219,209,.16)!important}
+#app .card.hero .bar>i{background:linear-gradient(90deg,#b99060,#ffe1aa,#c8ab82)!important;box-shadow:0 0 10px #f9cf9570!important}
+#app .card:not(.hero){
+ background:
+ linear-gradient(147deg,rgba(25,39,59,.98) 0%,rgba(12,23,40,.99) 63%,rgba(9,19,34,.99) 100%)!important;
+ border:1px solid rgba(181,202,221,.17)!important;
+ border-top-color:rgba(230,223,205,.28)!important;
+ border-radius:25px!important;
+ padding:19px!important;
+ box-shadow:inset 0 1px 0 rgba(250,242,224,.055),0 11px 27px rgba(0,0,0,.37)!important;
+ color:#f3f4f5!important;
+}
+#app .card:not(.hero):before{background:linear-gradient(115deg,rgba(255,241,216,.035),transparent 46%)!important}
+#app .card:not(.hero):hover{box-shadow:inset 0 1px 0 rgba(255,243,220,.09),0 15px 32px #0008!important}
+#app .statgrid{gap:11px!important}
+#app .stat{
+ padding:17px 12px!important;border-radius:20px!important;
+ border:1px solid rgba(214,202,185,.22)!important;
+ border-top-color:rgba(243,226,197,.32)!important;
+ background:
+ radial-gradient(circle at 92% 5%,rgba(243,192,125,.11),transparent 59%),
+ linear-gradient(145deg,#1a2a42,#101e32 69%,#0e192b)!important;
+ box-shadow:inset 0 1px 0 rgba(250,230,187,.075),0 9px 22px rgba(0,0,0,.34)!important;
+}
+#app .stat:nth-child(2){background:radial-gradient(circle at 93% 0%,rgba(101,171,229,.14),transparent 60%),linear-gradient(145deg,#172c42,#101b2c)!important}
+#app .stat:nth-child(3){background:radial-gradient(circle at 93% 0%,rgba(105,218,177,.11),transparent 60%),linear-gradient(145deg,#1b2a3a,#101b2c)!important}
+#app .stat b{color:#fff3da!important;font-weight:900!important;font-variant-numeric:tabular-nums}
+#app .stat small{color:#bbc7d4!important}
+#app .stat .spark{filter:drop-shadow(0 3px 8px #0008);display:inline-block;font-size:25px}
+#app .section-heading h2{color:#f7f2e9!important}
+#app .section-index{color:rgba(226,192,151,.30)!important}
+#app .rings-panel{
+ background:radial-gradient(ellipse at 80% 0%,rgba(101,139,185,.18),transparent 54%),
+ linear-gradient(138deg,#16273e,#0c192d 80%)!important;
+ border-color:rgba(226,205,176,.25)!important;
+}
+#app .rings-panel h2{color:#fff3df!important}
+#app .ring:before{background:#0c1a30!important}
+#app .ring{box-shadow:0 0 0 1px #efe9d014,0 7px 22px #0008!important}
+#app .ring-inner strong{font-variant-numeric:tabular-nums}
+#app .fo-page-heading{
+ min-height:200px!important;
+ padding:30px 175px 28px 25px!important;
+ border:1px solid rgba(233,204,170,.31)!important;
+ border-top-color:rgba(252,229,196,.43)!important;
+ border-radius:27px!important;
+ background:
+ linear-gradient(100deg,rgba(12,22,40,1) 8%,rgba(14,26,45,.98) 43%,rgba(11,23,43,.18) 100%),
+ url("./orbit.svg") right 12px center/208px 208px no-repeat,
+ linear-gradient(130deg,#1a2b47,#081525)!important;
+ box-shadow:inset 0 1px 0 rgba(255,244,220,.10),0 14px 34px #0008!important;
+ overflow:hidden!important;
+}
+#app .fo-page-heading:before,#app .fo-page-heading:after{display:none!important}
+#app .fo-page-heading h1{font-size:clamp(34px,8vw,47px)!important;color:#fff4df!important;letter-spacing:-1.15px}
+#app .fo-page-heading p{color:#c8d0dd!important;max-width:390px!important}
+#app .fo-section-line h2{color:#f7f2e9!important}
+#app .fo-icon-disc{
+ background:linear-gradient(155deg,#2c4564,#14253b)!important;
+ color:#f3d9a9!important;
+ border-color:rgba(236,210,170,.26)!important;
+ box-shadow:inset 0 1px 0 #ffffff20,0 7px 15px #0007!important;
+}
+#app .fo-plan-day{
+ border-radius:20px!important;
+ background:linear-gradient(120deg,#1b2b40,#101c2f)!important;
+ border:1px solid rgba(225,204,181,.23)!important;
+ border-left:3px solid #cea979!important;
+}
+#app .fo-plan-day.fo-today,#app .fo-plan-day[open]{border-color:rgba(248,209,156,.65)!important}
+#app .fo-plan-day .fo-day-number{background:#403626!important;color:#ffe2b1!important}
+#app .workout-list .workout-card{
+ border-radius:19px!important;
+ border-left:3px solid #c6a274!important;
+ background:linear-gradient(126deg,#1a2b40,#101c2e)!important;
+ border-top-color:#ffffff21!important;
+ box-shadow:inset 0 1px 0 #ffffff0a,0 9px 21px #0005!important;
+}
+#app .fo-reveal,#app .fo-nutrition-more,#app .fo-disclosure details{
+ border-radius:19px!important;
+ border:1px solid rgba(182,207,232,.21)!important;
+ background:linear-gradient(133deg,#15273e,#0c1b2f)!important;
+}
+#app button:not(.secondary):not(.fo-audio-toggle):not(.fo-push-toggle){
+ background:linear-gradient(115deg,#b99567,#e5c18d 40%,#c3a16e 100%)!important;
+ color:#172132!important;
+ box-shadow:inset 0 1px 0 rgba(255,253,246,.48),0 6px 14px rgba(8,10,18,.34)!important;
+}
+#app button.secondary{
+ background:linear-gradient(130deg,#26374d,#172840)!important;
+ color:#e8e4dc!important;
+ border:1px solid rgba(230,209,178,.22)!important;
+}
+#app button:focus-visible,#nav button:focus-visible{outline:2px solid #f0c893!important;outline-offset:3px}
+#app a{color:#e2c598!important}
+#app input:focus,#app select:focus,#app textarea:focus{outline-color:#d2b183!important;border-color:#bca077!important}
+#nav{
+ background:rgba(9,17,31,.92)!important;
+ border:1px solid rgba(225,209,185,.26)!important;
+ border-top-color:rgba(244,231,209,.35)!important;
+ border-radius:24px!important;
+ padding:8px 7px!important;
+ box-shadow:inset 0 1px 0 rgba(255,242,215,.11),0 10px 37px #000b,0 0 36px rgba(36,65,105,.12)!important;
+ -webkit-backdrop-filter:blur(25px)!important;backdrop-filter:blur(25px)!important;
+ max-width:758px!important;
+}
+#nav button{min-height:58px!important;color:#b2c1d1!important;border-radius:17px!important}
+#nav button:not(.on){color:#abb9c9!important}
+#nav button.on{
+ background:linear-gradient(145deg,#364460,#1c304b)!important;
+ border:1px solid rgba(238,210,166,.3)!important;
+ box-shadow:inset 0 1px 0 rgba(245,234,214,.13),0 5px 13px #0007!important;
+ color:#ffe5b4!important;
+}
+#nav button.on .nav-svg{color:#e9c997!important;filter:drop-shadow(0 0 9px rgba(255,217,155,.27))}
+#nav .nav-svg{width:22px!important;height:22px!important}
+#notice{background:#1b293d!important;border-color:rgba(218,193,160,.53)!important;color:#ffedd0!important}
+@keyframes madarMoonHover{0%{transform:translateY(-4px) rotate(-2deg)}100%{transform:translateY(6px) rotate(2deg)}}
+@media(min-width:640px){
+ #app .card.hero{min-height:300px!important;padding:29px 31px 26px!important}
+ #app .card.hero .madar-orb-art{right:8px!important;top:-22px!important;width:330px!important;height:330px!important}
+ #app .fo-page-heading{padding-right:200px!important;background-size:auto,228px 228px,auto!important}
+}
+@media(max-width:500px){
+ header{min-height:78px!important;padding:13px 1px 13px!important}
+ header .madar-icon{width:46px!important;height:46px!important;border-radius:14px!important}
+ header .madar-wordmark .arabic{font-size:27px!important}
+ header #status.pill{font-size:10px!important}
+ main#app{padding:0 13px 18px!important}
+ #app .madar-hello strong{font-size:22px!important}
+ #app .card.hero{min-height:251px!important;padding:21px 17px 18px!important}
+ #app .card.hero .madar-orb-art{width:clamp(196px,55vw,253px)!important;height:clamp(196px,55vw,253px)!important;right:-42px!important;top:-9px!important;opacity:.96!important}
+ #app .card.hero h1{max-width:69%!important;font-size:clamp(33px,9vw,43px)!important}
+ #app .card.hero>p{max-width:70%!important;font-size:12px!important}
+ #app .card.hero .feature-strip{margin-top:22px!important;gap:6px!important}
+ #app .card.hero .feature-strip span{padding:10px 7px!important}
+ #app .stat{padding:13px 9px!important}
+ #app .stat b{font-size:clamp(20px,5.3vw,29px)!important}
+ #app .fo-page-heading{min-height:171px!important;padding:23px 121px 22px 18px!important;background-size:auto,164px 164px,auto!important;background-position:center,right -13px center,center!important}
+ #app .fo-page-heading h1{font-size:clamp(29px,7.7vw,37px)!important}
+ #app .card:not(.hero){padding:17px!important}
+ #nav{width:calc(100% - 19px)!important}
+ #nav button{min-height:56px!important}
+}
+@media(max-width:365px){
+ #app .card.hero .madar-orb-art{width:185px!important;height:185px!important;right:-47px!important}
+ #app .card.hero h1{font-size:32px!important}
+ #app .card.hero .feature-strip b{font-size:21px!important}
+ #app .fo-page-heading{background-size:auto,148px 148px,auto!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #app .card.hero .madar-orb-art{animation:none!important}
+ #app button,#nav button,#app .card{transition:none!important}
+}
+/* Preserve the original installed iOS safe-area behavior and live-data mechanics. */
+@media(display-mode:standalone){
+ header{padding-top:max(18px,calc(env(safe-area-inset-top,0px) + 6px))!important}
+}
